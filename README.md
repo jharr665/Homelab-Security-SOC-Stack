@@ -25,26 +25,37 @@ This repo holds the **defensive operations stack** of the homelab. It provides *
 
 ```mermaid
 flowchart LR
+  %% --- Subgraphs ---
   subgraph K8s["Kubernetes Cluster"]
-    Falco
-    Kyverno
-    Trivy[Trivy Operator]
-    CrowdSec
-    WazuhAgents[Wazuh Agents (DaemonSet)]
+    Falco["Falco"];
+    Kyverno["Kyverno"];
+    Trivy["Trivy Operator"];
+    CrowdSec["CrowdSec"];
+    WazuhAgents["Wazuh Agents (DaemonSet)"];
   end
 
-  subgraph VMs
-    SO[Security Onion VM]
-    WazuhMgr[Wazuh Manager]
+  subgraph VMs["Virtual Machines"]
+    SO["Security Onion VM"];
+    WazuhMgr["Wazuh Manager"];
   end
 
-  Falco --> Logs
-  Kyverno --> Logs
-  Trivy --> Logs
-  CrowdSec --> Logs
-  WazuhAgents --> WazuhMgr
-  SO --> Elastic[(Elastic/Kibana)]
-  WazuhMgr --> Kibana
+  %% --- Other Nodes ---
+  Logs["Log Pipeline"];
+  Elastic["Elasticsearch"];
+  Kibana["Kibana"];
+
+  %% --- Edges ---
+  Falco --> Logs;
+  Kyverno --> Logs;
+  Trivy --> Logs;
+  CrowdSec --> Logs;
+
+  WazuhAgents --> WazuhMgr;
+
+  SO --> Elastic;
+  Logs --> Elastic;
+  WazuhMgr --> Kibana;
+
 ```
 
 ---
