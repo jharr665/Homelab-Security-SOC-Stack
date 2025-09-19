@@ -1,0 +1,2 @@
+Security Onion VM
+Deploy Security Onion on Proxmox VM. Attach mirrored VLAN/SPAN port. Use for Suricata + Zeek + Elastic dashboards.
