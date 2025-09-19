@@ -1,0 +1,6 @@
+Architecture — SOC Stack
+⦁	Kubernetes workloads (Falco, Kyverno, Trivy, CrowdSec, Wazuh Agents)
+⦁	VM-based Security Onion for packet capture & Elastic dashboards
+⦁	Central Wazuh Manager for agent data
+⦁	Log pipeline forwards into Elastic/Kibana + Loki/Grafana
+⦁	Alerts feed into SOC workflows (Discord/Slack webhooks, email, dashboards)
